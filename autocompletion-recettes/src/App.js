@@ -1,8 +1,6 @@
 
-import './App.css';
-import Home from './pages/Home';
-import SearchResults from './components/SearchResults';
-import { Routes, Route } from 'react-router-dom';
+
+import Recipe from './components/Recipe';
 
 function App() {
 
@@ -11,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path="/recipe/:id" element={<Recipe />} />
       </Routes>
     </div>
   );
