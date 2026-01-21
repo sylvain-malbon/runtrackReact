@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
-function SearchResults() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
+  const navigate = useNavigate();
 
   const [results, setResults] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -33,7 +33,12 @@ function SearchResults() {
       {error && <div style={{color:'red'}}>{error}</div>}
       <div className="results-grid">
         {results.map(meal => (
-          <div className="result-card" key={meal.idMeal}>
+          <div
+            className="result-card"
+            key={meal.idMeal}
+            onClick={() => navigate(`/recipe/${meal.idMeal}`)}
+            style={{ cursor: 'pointer' }}
+          >
             <img src={meal.strMealThumb} alt={meal.strMeal} className="result-img" />
             <div className="result-info">
               <h3>{meal.strMeal}</h3>
