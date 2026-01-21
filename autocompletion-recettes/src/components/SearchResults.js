@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+function SearchResults() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
 
@@ -30,7 +31,17 @@ import { useSearchParams } from 'react-router-dom';
       <h2>Résultats pour : <span style={{color: 'orange'}}>{query}</span></h2>
       {loading && <div>Chargement...</div>}
       {error && <div style={{color:'red'}}>{error}</div>}
-      {/* Résultats de recherche s'afficheront ici */}
+      <div className="results-grid">
+        {results.map(meal => (
+          <div className="result-card" key={meal.idMeal}>
+            <img src={meal.strMealThumb} alt={meal.strMeal} className="result-img" />
+            <div className="result-info">
+              <h3>{meal.strMeal}</h3>
+              <p>{meal.strCategory}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
