@@ -1,0 +1,22 @@
+/* Styles spécifiques à la page d'accueil (Home) */
+
+.center-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.google-title {
+  font-family: 'Product Sans', Arial, Helvetica, sans-serif;
+  font-size: 4rem;
+  color: #4285f4;
+  font-weight: bold;
+  letter-spacing: -2px;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  text-align: center;
+  user-select: none;
+}

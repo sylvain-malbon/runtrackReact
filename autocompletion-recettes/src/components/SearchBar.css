@@ -1,0 +1,45 @@
+/* Styles spécifiques au composant SearchBar */
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.search-form input[type="text"] {
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  width: 350px;
+  outline: none;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 1px 6px rgba(32,33,36,0.1);
+}
+
+.search-form input[type="text"]:focus {
+  box-shadow: 0 1px 6px rgba(32,33,36,0.2);
+  border-color: #4285f4;
+}
+
+.search-form button {
+  padding: 0.7rem 1.5rem;
+  background: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 24px;
+  color: #3c4043;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: border 0.2s, background 0.2s;
+}
+
+.search-form button:hover {
+  border: 1px solid #dadce0;
+  background: #f1f3f4;
+}
