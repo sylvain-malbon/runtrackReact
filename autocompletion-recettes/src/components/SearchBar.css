@@ -29,10 +29,10 @@
 
 .search-form button {
   padding: 0.7rem 1.5rem;
-  background: #f8f9fa;
-  border: 1px solid #f8f9fa;
+  background: orange;
+  border: 1px solid orange;
   border-radius: 24px;
-  color: #3c4043;
+  color: #fff;
   font-size: 1rem;
   cursor: pointer;
   margin-left: 0.5rem;
@@ -40,6 +40,6 @@
 }
 
 .search-form button:hover {
-  border: 1px solid #dadce0;
-  background: #f1f3f4;
+  border: 1px solid #ff9800;
+  background: #ff9800;
 }

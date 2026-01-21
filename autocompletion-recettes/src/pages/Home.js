@@ -7,7 +7,9 @@ import SearchBar from '../components/SearchBar';
 function Home() {
   return (
     <div className="center-container">
-      <div className="google-title">Google</div>
+      <div className="google-title">
+        Goût<span className="orange-gle">gle</span>
+      </div>
       <SearchBar />
     </div>
   );
