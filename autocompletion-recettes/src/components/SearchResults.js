@@ -31,22 +31,28 @@ function SearchResults() {
       <h2>Résultats pour : <span style={{color: 'orange'}}>{query}</span></h2>
       {loading && <div>Chargement...</div>}
       {error && <div style={{color:'red'}}>{error}</div>}
-      <div className="results-grid">
-        {results.map(meal => (
-          <div
-            className="result-card"
-            key={meal.idMeal}
-            onClick={() => navigate(`/recipe/${meal.idMeal}`)}
-            style={{ cursor: 'pointer' }}
-          >
-            <img src={meal.strMealThumb} alt={meal.strMeal} className="result-img" />
-            <div className="result-info">
-              <h3>{meal.strMeal}</h3>
-              <p>{meal.strCategory}</p>
+      {(!loading && results.length === 0 && !error) ? (
+        <div style={{color: '#ff9800', textAlign: 'center', marginTop: '2rem', fontWeight: 'bold'}}>
+          Aucune recette trouvée.
+        </div>
+      ) : (
+        <div className="results-grid">
+          {results.map(meal => (
+            <div
+              className="result-card"
+              key={meal.idMeal}
+              onClick={() => navigate(`/recipe/${meal.idMeal}`)}
+              style={{ cursor: 'pointer' }}
+            >
+              <img src={meal.strMealThumb} alt={meal.strMeal} className="result-img" />
+              <div className="result-info">
+                <h3>{meal.strMeal}</h3>
+                <p>{meal.strCategory}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
