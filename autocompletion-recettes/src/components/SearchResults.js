@@ -33,7 +33,8 @@ function SearchResults() {
       {error && <div style={{color:'red'}}>{error}</div>}
       {(!loading && results.length === 0 && !error) ? (
         <div style={{color: '#ff9800', textAlign: 'center', marginTop: '2rem', fontWeight: 'bold'}}>
-          Aucune recette trouvée.
+          Aucune recette trouvée.<br />
+          <button onClick={() => navigate('/')} style={{marginTop:'1.5rem',padding:'0.5rem 1.2rem',borderRadius:'8px',border:'1px solid #ccc',background:'#f5f5f5',cursor:'pointer'}}>Nouvelle recherche</button>
         </div>
       ) : (
         <div className="results-grid">

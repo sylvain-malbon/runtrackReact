@@ -1,8 +1,9 @@
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import React from 'react';
 
 function RecipeDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [meal, setMeal] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -30,7 +31,11 @@ function RecipeDetail() {
 
   if (loading) return <div style={{textAlign:'center',marginTop:'2rem'}}>Chargement...</div>;
   if (error) return <div style={{color:'red',textAlign:'center',marginTop:'2rem'}}>{error}</div>;
-  if (!meal) return <div style={{color:'#ff9800',textAlign:'center',marginTop:'2rem'}}>Recette non trouvée.</div>;
+  if (!meal) return (
+    <div style={{color:'#ff9800',textAlign:'center',marginTop:'2rem'}}>
+      Recette non trouvée.
+    </div>
+  );
 
   // Fonction pour extraire ingrédients et quantités
   const getIngredients = (meal) => {
@@ -49,6 +54,7 @@ function RecipeDetail() {
 
   return (
     <div style={{textAlign: 'center', marginTop: '3rem'}}>
+      <button onClick={() => navigate(-1)} style={{marginBottom:'2rem',padding:'0.5rem 1.2rem',borderRadius:'8px',border:'1px solid #ccc',background:'#f5f5f5',cursor:'pointer'}}>← Retour aux résultats</button>
       <h2>{meal.strMeal}</h2>
       <img src={meal.strMealThumb} alt={meal.strMeal} style={{width:'250px',borderRadius:'12px',margin:'1rem 0'}} />
       <p><b>Catégorie :</b> {meal.strCategory} | <b>Origine :</b> {meal.strArea}</p>
