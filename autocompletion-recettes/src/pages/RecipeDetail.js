@@ -1,6 +1,6 @@
-
 import { useParams, useNavigate } from 'react-router-dom';
 import React from 'react';
+import './RecipeDetail.css';
 
 function RecipeDetail() {
   const navigate = useNavigate();
@@ -53,12 +53,12 @@ function RecipeDetail() {
   const ingredients = getIngredients(meal);
 
   return (
-    <div style={{textAlign: 'center', marginTop: '3rem'}}>
-      <button onClick={() => navigate(-1)} style={{marginBottom:'2rem',padding:'0.5rem 1.2rem',borderRadius:'8px',border:'1px solid #ccc',background:'#f5f5f5',cursor:'pointer'}}>← Retour aux résultats</button>
+    <div className="detail-container">
+      <button onClick={() => navigate(-1)} className="detail-back-btn">← Retour aux résultats</button>
       <h2>{meal.strMeal}</h2>
-      <img src={meal.strMealThumb} alt={meal.strMeal} style={{width:'250px',borderRadius:'12px',margin:'1rem 0'}} />
+      <img src={meal.strMealThumb} alt={meal.strMeal} className="detail-img" />
       <p><b>Catégorie :</b> {meal.strCategory} | <b>Origine :</b> {meal.strArea}</p>
-      <div style={{margin:'2rem auto',maxWidth:'400px',textAlign:'left'}}>
+      <div className="detail-ingredients">
         <b>Ingrédients :</b>
         <ul>
           {ingredients.map((item, idx) => (
@@ -66,7 +66,7 @@ function RecipeDetail() {
           ))}
         </ul>
       </div>
-      <p style={{maxWidth:'600px',margin:'2rem auto',textAlign:'left'}}><b>Instructions :</b><br />{meal.strInstructions}</p>
+      <p className="detail-instructions"><b>Instructions :</b><br />{meal.strInstructions}</p>
     </div>
   );
 }

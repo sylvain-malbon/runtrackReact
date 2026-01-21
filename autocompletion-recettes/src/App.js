@@ -1,8 +1,8 @@
 
 import './App.css';
 import Home from './pages/Home';
-import SearchResults from './components/SearchResults';
-import RecipeDetail from './components/RecipeDetail';
+import SearchResults from './pages/SearchResults';
+import RecipeDetail from './pages/RecipeDetail';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {

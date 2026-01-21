@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+import './SearchResults.css';
 
 function SearchResults() {
   const [searchParams] = useSearchParams();
@@ -43,7 +44,6 @@ function SearchResults() {
               className="result-card"
               key={meal.idMeal}
               onClick={() => navigate(`/recipe/${meal.idMeal}`)}
-              style={{ cursor: 'pointer' }}
             >
               <img src={meal.strMealThumb} alt={meal.strMeal} className="result-img" />
               <div className="result-info">
