@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
+function SearchResults() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const navigate = useNavigate();
