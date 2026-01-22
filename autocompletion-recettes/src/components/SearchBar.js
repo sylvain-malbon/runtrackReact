@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 function SearchBar({ onSearch }) {
 	const [query, setQuery] = React.useState('');
 	const [suggestions, setSuggestions] = React.useState([]); // Ajout du state suggestions
+	const [startsWithSuggestions, setStartsWithSuggestions] = React.useState([]); // Suggestions qui commencent par
+	const [includesSuggestions, setIncludesSuggestions] = React.useState([]); // Suggestions qui contiennent
 	const navigate = useNavigate();
 
 	React.useEffect(() => {
 		if (query.length < 2) {
 			setSuggestions([]);
+			setStartsWithSuggestions([]);
+			setIncludesSuggestions([]);
 			return;
 		}
 		const handler = setTimeout(() => {
@@ -18,12 +22,21 @@ function SearchBar({ onSearch }) {
 					const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`);
 					const data = await res.json();
 					if (data.meals) {
-						setSuggestions(data.meals.map(meal => meal.strMeal).slice(0, 10));
+						const all = data.meals.map(meal => meal.strMeal);
+						const starts = all.filter(name => name.toLowerCase().startsWith(query.toLowerCase()));
+						const includes = all.filter(name => !name.toLowerCase().startsWith(query.toLowerCase()) && name.toLowerCase().includes(query.toLowerCase()));
+						setStartsWithSuggestions(starts.slice(0, 10));
+						setIncludesSuggestions(includes.slice(0, 10 - starts.length));
+						setSuggestions([...starts.slice(0, 10), ...includes.slice(0, 10 - starts.length)]);
 					} else {
 						setSuggestions([]);
+						setStartsWithSuggestions([]);
+						setIncludesSuggestions([]);
 					}
 				} catch (e) {
 					setSuggestions([]);
+					setStartsWithSuggestions([]);
+					setIncludesSuggestions([]);
 				}
 			};
 			fetchSuggestions();
@@ -52,12 +65,27 @@ function SearchBar({ onSearch }) {
 			<button type="submit">Rechercher</button>
 
 			{/* Suggestions */}
-			{suggestions.length > 0 && (
+			{(startsWithSuggestions.length > 0 || includesSuggestions.length > 0) && (
 				<ul className="suggestions-list">
-					{suggestions.map((sugg, idx) => (
-						<li key={idx} onClick={() => {
+					{startsWithSuggestions.map((sugg, idx) => (
+						<li key={"start-"+idx} onClick={() => {
 							setQuery(sugg);
 							setSuggestions([]);
+							setStartsWithSuggestions([]);
+							setIncludesSuggestions([]);
+							if (onSearch) onSearch(sugg);
+							navigate(`/search?q=${encodeURIComponent(sugg)}`);
+						}}><b>{sugg}</b></li>
+					))}
+					{startsWithSuggestions.length > 0 && includesSuggestions.length > 0 && (
+						<li className="suggestion-separator"><em>Autres résultats</em></li>
+					)}
+					{includesSuggestions.map((sugg, idx) => (
+						<li key={"inc-"+idx} onClick={() => {
+							setQuery(sugg);
+							setSuggestions([]);
+							setStartsWithSuggestions([]);
+							setIncludesSuggestions([]);
 							if (onSearch) onSearch(sugg);
 							navigate(`/search?q=${encodeURIComponent(sugg)}`);
 						}}>{sugg}</li>

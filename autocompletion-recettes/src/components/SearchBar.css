@@ -71,3 +71,24 @@
 .suggestions-list li:hover {
   background: #f5f5f5;
 }
+
+.suggestions-list li.suggestion-separator {
+  background: none;
+  cursor: default;
+  pointer-events: none;
+  border-top: 1px solid #eee;
+  margin: 0.5rem 0 0.2rem 0;
+  padding: 0.5rem 1.2rem 0.2rem 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #b0b0b0;
+  letter-spacing: 0.04em;
+  font-size: 0.93em;
+}
+
+.suggestions-list li.suggestion-separator em {
+  color: inherit;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
