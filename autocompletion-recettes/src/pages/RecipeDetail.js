@@ -66,7 +66,19 @@ function RecipeDetail() {
           ))}
         </ul>
       </div>
-      <p className="detail-instructions"><b>Instructions :</b><br />{meal.strInstructions}</p>
+      <p className="detail-instructions"><b>Instructions :</b><br />
+        {meal.strInstructions && meal.strInstructions.split(/\r?\n\r?\n/).map((para, i) => (
+          <span key={i}>
+            {para.split(/\r?\n/).map((line, j, arr) => (
+              <React.Fragment key={j}>
+                {line}
+                {j < arr.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+            <br /><br />
+          </span>
+        ))}
+      </p>
     </div>
   );
 }

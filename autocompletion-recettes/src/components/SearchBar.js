@@ -132,6 +132,9 @@ function SearchBar({ onSearch }) {
 			{/* Suggestions */}
 			{(startsWithSuggestions.length > 0 || includesSuggestions.length > 0) && (
 				<ul className="suggestions-list">
+					{startsWithSuggestions.length > 0 && (
+						<li className="suggestion-separator"><span>commencent par "{query}"</span></li>
+					)}
 					{startsWithSuggestions.map((sugg, idx) => (
 						<li key={"start-"+idx}
 							className={activeIndex === idx ? 'active-suggestion' : ''}
@@ -146,7 +149,7 @@ function SearchBar({ onSearch }) {
 					><b>{sugg}</b></li>
 					))}
 					{startsWithSuggestions.length > 0 && includesSuggestions.length > 0 && (
-						<li className="suggestion-separator"><span>Autres résultats</span></li>
+						<li className="suggestion-separator"><span>contiennent "{query}"</span></li>
 					)}
 					{includesSuggestions.map((sugg, idx) => (
 						<li key={"inc-"+idx}
