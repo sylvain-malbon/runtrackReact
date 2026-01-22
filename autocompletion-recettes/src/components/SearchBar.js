@@ -114,8 +114,8 @@ function SearchBar({ onSearch }) {
 			<div className="search-input-wrapper">
 				<span className="search-icon" aria-label="Rechercher">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-						<circle cx="9" cy="9" r="7" stroke="#bbb" strokeWidth="2"/>
-						<line x1="14.2" y1="14.2" x2="18" y2="18" stroke="#bbb" strokeWidth="2" strokeLinecap="round"/>
+						<circle cx="8.5" cy="8.5" r="5" stroke="#888" strokeWidth="2.2"/>
+						<line x1="13.7" y1="13.7" x2="18" y2="18" stroke="#888" strokeWidth="2.2" strokeLinecap="round"/>
 					</svg>
 				</span>
 				<input
