@@ -67,8 +67,8 @@
 
 .search-form button {
   padding: 0.7rem 1.5rem;
-  background: orange;
-  border: 1px solid orange;
+    background: #ff8000;
+    border: 1px solid #ff8000;
   border-radius: 24px;
   color: #fff;
   font-size: 1rem;
@@ -78,8 +78,8 @@
 }
 
 .search-form button:hover {
-  border: 1px solid #ff9800;
-  background: #ff9800;
+    border: 1px solid #ff8000;
+    background: #ff8000;
 }
 
 .suggestions-list {
