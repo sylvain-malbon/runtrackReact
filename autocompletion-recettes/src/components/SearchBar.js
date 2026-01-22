@@ -112,7 +112,12 @@ function SearchBar({ onSearch }) {
 	return (
 		<form ref={formRef} className="search-form" onSubmit={handleSubmit} autoComplete="off">
 			<div className="search-input-wrapper">
-				<span className="search-icon">🔍</span>
+				<span className="search-icon" aria-label="Rechercher">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<circle cx="9" cy="9" r="7" stroke="#bbb" strokeWidth="2"/>
+						<line x1="14.2" y1="14.2" x2="18" y2="18" stroke="#bbb" strokeWidth="2" strokeLinecap="round"/>
+					</svg>
+				</span>
 				<input
 					type="text"
 					placeholder="Rechercher une recette..."
