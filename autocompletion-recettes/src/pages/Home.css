@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:600&display=swap');
+
 .orange-gle {
   color: orange;
 }
@@ -13,11 +15,11 @@
 }
 
 .google-title {
-  font-family: 'Product Sans', Arial, Helvetica, sans-serif;
-  font-size: 4rem;
-  color: #4285f4;
-  font-weight: bold;
-  letter-spacing: -2px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 5rem;
+  letter-spacing: 0.02em;
+  color: #4285f4; /* Bleu Google pour 'Goût' */
   margin-bottom: 1.5rem;
   margin-top: 0;
   text-align: center;
