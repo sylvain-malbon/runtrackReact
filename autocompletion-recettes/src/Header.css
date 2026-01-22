@@ -27,11 +27,11 @@
 }
 
 .header-logo-text {
-  font-family: 'Poppins', Arial, sans-serif;
-  font-size: 2.2rem;
-  font-weight: 400;
-  color: #4285f4;
-  letter-spacing: -1px;
+  font-family: 'Baloo 2', 'Poppins', Arial, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #ff8000;
+  letter-spacing: 0.5px;
   transition: color 0.2s;
 }
 
