@@ -97,3 +97,39 @@
   font-style: normal;
   font-weight: inherit;
 }
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 1.2em;
+  color: #bbb;
+  pointer-events: none;
+}
+
+.search-input-wrapper input[type="text"] {
+  padding-left: 2.2em;
+}
+
+.loading-spinner {
+  position: absolute;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ff9800;
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-left: 0.5em;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

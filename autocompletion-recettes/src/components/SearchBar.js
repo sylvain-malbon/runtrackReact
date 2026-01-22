@@ -8,6 +8,7 @@ function SearchBar({ onSearch }) {
 	const [startsWithSuggestions, setStartsWithSuggestions] = React.useState([]);
 	const [includesSuggestions, setIncludesSuggestions] = React.useState([]);
 	const [activeIndex, setActiveIndex] = React.useState(-1);
+	const [loading, setLoading] = React.useState(false); // Ajout du state loading
 	const navigate = useNavigate();
 	const formRef = React.useRef(null);
 
@@ -22,8 +23,10 @@ function SearchBar({ onSearch }) {
 			setSuggestions([]);
 			setStartsWithSuggestions([]);
 			setIncludesSuggestions([]);
+			setLoading(false);
 			return;
 		}
+		setLoading(true);
 		const handler = setTimeout(() => {
 			const fetchSuggestions = async () => {
 				try {
@@ -46,10 +49,14 @@ function SearchBar({ onSearch }) {
 					setStartsWithSuggestions([]);
 					setIncludesSuggestions([]);
 				}
+				setLoading(false);
 			};
 			fetchSuggestions();
 		}, 300);
-		return () => clearTimeout(handler);
+		return () => {
+			clearTimeout(handler);
+			setLoading(false);
+		};
 	}, [query]);
 
 	React.useEffect(() => {
@@ -104,13 +111,17 @@ function SearchBar({ onSearch }) {
 
 	return (
 		<form ref={formRef} className="search-form" onSubmit={handleSubmit} autoComplete="off">
-			<input
-				type="text"
-				placeholder="Rechercher une recette..."
-				value={query}
-				onChange={e => setQuery(e.target.value)}
-				onKeyDown={handleKeyDown}
-			/>
+			<div className="search-input-wrapper">
+				<span className="search-icon">🔍</span>
+				<input
+					type="text"
+					placeholder="Rechercher une recette..."
+					value={query}
+					onChange={e => setQuery(e.target.value)}
+					onKeyDown={handleKeyDown}
+				/>
+				{loading && <span className="loading-spinner"></span>}
+			</div>
 			<button type="submit">Rechercher</button>
 
 			{/* Suggestions */}
