@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom';
 
 function SearchBar({ onSearch }) {
 	const [query, setQuery] = React.useState('');
-	const [suggestions, setSuggestions] = React.useState([]); // Ajout du state suggestions
-	const [startsWithSuggestions, setStartsWithSuggestions] = React.useState([]); // Suggestions qui commencent par
-	const [includesSuggestions, setIncludesSuggestions] = React.useState([]); // Suggestions qui contiennent
-	const [activeIndex, setActiveIndex] = React.useState(-1); // Pour highlight
+	const [suggestions, setSuggestions] = React.useState([]);
+	const [startsWithSuggestions, setStartsWithSuggestions] = React.useState([]);
+	const [includesSuggestions, setIncludesSuggestions] = React.useState([]);
+	const [activeIndex, setActiveIndex] = React.useState(-1);
 	const navigate = useNavigate();
+	const formRef = React.useRef(null);
 
 	const allSuggestions = [...startsWithSuggestions, ...includesSuggestions];
 
 	React.useEffect(() => {
-		setActiveIndex(-1); // Reset highlight à chaque nouvelle liste
+		setActiveIndex(-1);
 	}, [startsWithSuggestions, includesSuggestions]);
 
 	React.useEffect(() => {
@@ -51,6 +52,21 @@ function SearchBar({ onSearch }) {
 		return () => clearTimeout(handler);
 	}, [query]);
 
+	React.useEffect(() => {
+		function handleClickOutside(event) {
+			if (formRef.current && !formRef.current.contains(event.target)) {
+				setSuggestions([]);
+				setStartsWithSuggestions([]);
+				setIncludesSuggestions([]);
+				setActiveIndex(-1);
+			}
+		}
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (onSearch) {
@@ -87,7 +103,7 @@ function SearchBar({ onSearch }) {
 	};
 
 	return (
-		<form className="search-form" onSubmit={handleSubmit} autoComplete="off">
+		<form ref={formRef} className="search-form" onSubmit={handleSubmit} autoComplete="off">
 			<input
 				type="text"
 				placeholder="Rechercher une recette..."
