@@ -1,5 +1,4 @@
 /* Styles spécifiques au composant SearchBar */
-
 .search-form {
   position: relative;
   display: flex;
@@ -9,15 +8,24 @@
   background: none;
   box-shadow: none;
   padding: 0;
-  margin-top: 2rem;
+  margin: 0; /* CORRECTION : était margin-top: 2rem; */
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1; /* AJOUT : pour que l'input prenne l'espace disponible */
+  max-width: 400px; /* AJOUT : limite la largeur max */
 }
 
 .search-form input[type="text"] {
   padding: 0.7rem 1.2rem;
+  padding-left: 2.8em;
   border: 1px solid #dfe1e5;
   border-radius: 24px;
   font-size: 1.1rem;
-  width: 350px;
+  width: 100%; /* CORRECTION : était 350px fixe */
   outline: none;
   transition: box-shadow 0.2s;
   box-shadow: 0 1px 6px rgba(32,33,36,0.1);
@@ -28,6 +36,35 @@
   border-color: #4285f4;
 }
 
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: #bbb;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-spinner {
+  position: absolute;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ff9800;
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .search-form button {
   padding: 0.7rem 1.5rem;
   background: orange;
@@ -36,8 +73,8 @@
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
-  margin-left: 0.5rem;
   transition: border 0.2s, background 0.2s;
+  white-space: nowrap; /* AJOUT : empêche le texte de se couper */
 }
 
 .search-form button:hover {
@@ -96,45 +133,4 @@
   font-size: inherit;
   font-style: normal;
   font-weight: inherit;
-}
-
-.search-input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.search-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2em;
-  color: #bbb;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.search-input-wrapper input[type="text"] {
-  padding-left: 2.8em;
-}
-
-.loading-spinner {
-  position: absolute;
-  right: 16px;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #ff9800;
-  border-top: 2px solid #fff;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  margin-left: 0.5em;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }

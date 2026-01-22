@@ -6,12 +6,13 @@
 /* Styles spécifiques à la page d'accueil (Home) */
 
 .center-container {
-  min-height: 100vh;
+  min-height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: #fff;
+  padding-top: 64px;
 }
 
 .google-title {

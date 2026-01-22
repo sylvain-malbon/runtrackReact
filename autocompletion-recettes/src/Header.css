@@ -1,0 +1,154 @@
+/* Header principal */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.2rem;
+  padding: 18px 32px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 64px;
+}
+
+/* Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.header-logo:focus {
+  box-shadow: 0 0 0 2px #4285f4;
+}
+
+.header-logo-text {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #4285f4;
+  letter-spacing: -1px;
+  transition: color 0.2s;
+}
+
+.header-logo:hover .header-logo-text {
+  color: #174ea6;
+}
+
+/* Bloc de droite (powered by + SearchBar) */
+.header-right-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* Powered by bar */
+.header-powered-by-bar {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #888;
+  white-space: nowrap;
+}
+
+.powered-label {
+  font-size: inherit;
+  font-weight: 300;
+  color: #aaa;
+  margin-right: 0.2em;
+}
+
+/* Styles pour les lettres de Goûtgle - VERSION GRISE UNIQUEMENT DANS LE HEADER */
+.header-powered-by-bar .g-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .o-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .u-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .t-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .g2-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .l-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .e-style {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header-powered-by-bar .orange-gle {
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* SearchBar form */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 8px;
+    gap: 1rem;
+  }
+  
+  .header-logo-text {
+    font-size: 1.5rem;
+  }
+  
+  .header-right-block {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+  
+  .header-powered-by-bar {
+    justify-content: center;
+  }
+}
